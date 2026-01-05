@@ -1,9 +1,10 @@
 'use client'
+// fixed import issue
 
 import { useEffect, useState } from 'react'
 import AutoCompleteAddress from './AutoCompleteAddress'
 import Cars from './Cars'
-import { Card } from '@mui/material'
+
 import Cards from './Cards'
 
 export default function Booking() {
@@ -23,8 +24,8 @@ export default function Booking() {
         style={{ minHeight: screenHeight }} // 👈 minHeight, not height
       >
         <AutoCompleteAddress />
-        <Cars/>
-        <Cards/>
+        <Cars />
+        <Cards />
         <button className='w-full bg-yellow-400
         p-1 rounded-md mt-4 cursor-pointer'>Book</button>
       </div>
