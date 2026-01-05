@@ -1,0 +1,28 @@
+{
+  "name": "text-go-youtube",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@clerk/nextjs": "^6.36.5",
+    "@mapbox/mapbox-gl-geocoder": "^5.1.2",
+    "@types/mapbox-gl": "^3.4.1",
+    "mapbox-gl": "^3.17.0",
+    "next": "16.1.1",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "react-map-gl": "^7.1.9"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}
