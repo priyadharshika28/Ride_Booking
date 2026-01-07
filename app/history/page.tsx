@@ -1,8 +1,12 @@
+"use client";
+import { useBookingHistory } from '@/context/BookingHistoryContext';
 import React from 'react';
 
 const History = () => {
     // Static mock data for rides
-    const rides = [
+    const { history } = useBookingHistory();
+    const rides = history;
+    /*const rides = [
         {
             id: 1,
             date: '2024-01-01',
@@ -12,34 +16,8 @@ const History = () => {
             price: '$15.00',
             status: 'Completed'
         },
-        {
-            id: 2,
-            date: '2024-01-02',
-            time: '02:15 PM',
-            pickup: 'JFK Airport',
-            dropoff: 'Brooklyn Bridge',
-            price: '$45.50',
-            status: 'Completed'
-        },
-        {
-            id: 3,
-            date: '2024-01-05',
-            time: '09:00 AM',
-            pickup: 'Wall Street',
-            dropoff: 'Empire State Building',
-            price: '$20.00',
-            status: 'Cancelled'
-        },
-        {
-            id: 4,
-            date: '2024-01-10',
-            time: '06:45 PM',
-            pickup: 'Grand Central Terminal',
-            dropoff: 'SoHo',
-            price: '$12.75',
-            status: 'Completed'
-        },
-    ];
+        
+    ];*/
 
     return (
         <div className='p-6'>
