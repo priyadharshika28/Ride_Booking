@@ -6,6 +6,7 @@ import CarList from "@/data/CarList";
 
 function Cars() {
   const [selectedCar, setSelectedCar] = useState<number | null>(null);
+  
 
   return (
     <div className="mt-4">

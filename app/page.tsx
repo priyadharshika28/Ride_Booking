@@ -10,9 +10,9 @@ import { useEffect, useState } from "react";
 
 export default function Home() {
   const [userLocation, setUserLocation] = useState<any>(null);
-  const[sourceCordinates,setSourceCordinates] = useState<any>([]);
-  const[destinationCordinates,setDestinationCordinates] = useState<any>(false);
-  const[directionData,setDirectionData] = useState<any>([]);
+  const [sourceCordinates, setSourceCordinates] = useState<any>([]);
+  const [destinationCordinates, setDestinationCordinates] = useState<any>(false);
+  const [directionData, setDirectionData] = useState<any>([]);
 
 
   useEffect(() => {
@@ -31,20 +31,20 @@ export default function Home() {
   return (
     <div className="p-6">
       <UserLocationContext.Provider value={{ userLocation, setUserLocation }}>
-        <SourceCordiContext.Provider value={{sourceCordinates,setSourceCordinates}}>
-        <DestinationCordiContext.Provider value={{destinationCordinates,setDestinationCordinates}}>
-        <div className="grid grid-cols-1 md:grid-cols-5">
-          
-          <div className="md:col-span-2">
-            <Booking />
-          </div>
+        <SourceCordiContext.Provider value={{ sourceCordinates, setSourceCordinates }}>
+          <DestinationCordiContext.Provider value={{ destinationCordinates, setDestinationCordinates }}>
+            <div className="grid grid-cols-1 md:grid-cols-5">
 
-          <div className="md:col-span-3 rounded-lg overflow-hidden h-ful">
-            <MapBoxMap />
-          </div>
+              <div className="md:col-span-2">
+                <Booking />
+              </div>
 
-        </div>
-        </DestinationCordiContext.Provider>
+              <div className="md:col-span-3 rounded-lg overflow-hidden h-full">
+                <MapBoxMap />
+              </div>
+
+            </div>
+          </DestinationCordiContext.Provider>
         </SourceCordiContext.Provider>
       </UserLocationContext.Provider>
     </div>
