@@ -10,9 +10,9 @@ const MAPBOX_RETRIVE_URL =
 
 type ActiveInput = "source" | "destination" | null;
 
-export default function AutoCompleteAddress() {
-  const [source, setSource] = useState("");
-  const [destination, setDestination] = useState("");
+export default function AutoCompleteAddress({ source, setSource, destination, setDestination }: any) {
+  // const [source, setSource] = useState("");
+  // const [destination, setDestination] = useState("");
   const [addressList, setAddressList] = useState<any>(null);
   const [activeInput, setActiveInput] = useState<ActiveInput>(null);
   const [isSelected, setIsSelected] = useState(false);
