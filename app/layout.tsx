@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
-import { Inter,Outfit } from "next/font/google";
+import { Inter, Outfit } from "next/font/google";
 import NavBar from "@/components/NavBar";
+import { BookingHistoryProvider } from "@/context/BookingHistoryContext";
 
 const outfit = Outfit({
   variable: "--font-Outfit",
@@ -33,14 +34,16 @@ export default function RootLayout({
 
   return (
     <ClerkProvider publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}>
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <NavBar/>
-        {children}
-      </body>
-    </html>
+      <html lang="en">
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        >
+          <BookingHistoryProvider>
+            <NavBar />
+            {children}
+          </BookingHistoryProvider>
+        </body>
+      </html>
     </ClerkProvider>
   );
 }
