@@ -2,9 +2,8 @@ import React, { useState } from 'react'
 import Image from 'next/image'
 import CarList from '@/data/CarList'
 
-function Cars() {
-  const [selectedCar, setSelectedCar] = useState<number | null>(null)
-
+function Cars({setSelectedCar,selectedCar}:any) {
+  
   return (
     <div className="mt-4">
       <h2 className="font-semibold mb-3">Choose a car</h2>
@@ -13,9 +12,9 @@ function Cars() {
           <div
             key={car.id}
             className={`border p-3 rounded-md flex flex-col items-center cursor-pointer hover:shadow-md transition-all ${
-              selectedCar === car.id ? 'border-yellow-400 shadow-lg' : 'border-gray-200'
+                selectedCar == car ? 'border-yellow-400 shadow-lg' : 'border-gray-200'
             }`}
-            onClick={() => setSelectedCar(car.id)}
+            onClick={() => setSelectedCar(car)}
           >
             <Image src={car.image} alt={car.name} width={80} height={50} />
             <div className="mt-2 text-sm font-medium">{car.name}</div>
