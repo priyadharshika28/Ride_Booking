@@ -1,3 +1,5 @@
+"use client";
+
 import { useBookingHistory } from '@/context/BookingHistoryContext';
 import React from 'react';
 
