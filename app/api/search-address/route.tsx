@@ -1,22 +1,26 @@
-import { NextResponse } from 'next/server'
+import NextAuth from "next-auth"
+import GoogleProvider from "next-auth/providers/google"
 
-const BASE_URL =
-  'https://api.mapbox.com/search/searchbox/v1/suggest'
+const missingVars = [];
+if (!process.env.GOOGLE_CLIENT_ID) missingVars.push("GOOGLE_CLIENT_ID");
+if (!process.env.GOOGLE_CLIENT_SECRET) missingVars.push("GOOGLE_CLIENT_SECRET");
+if (!process.env.NEXTAUTH_SECRET) missingVars.push("NEXTAUTH_SECRET");
 
-export async function GET(request: Request) {
-  const { searchParams } = new URL(request.url)
-  const searchText = searchParams.get('q')
-
-  if (!searchText) {
-    return NextResponse.json({ suggestions: [] })
-  }
-
-  const sessionToken = crypto.randomUUID() // ✅ REQUIRED
-
-  const res = await fetch(
-    `${BASE_URL}?q=${encodeURIComponent(searchText)}&language=en&limit=6&country=IN&session_token=${sessionToken}&access_token=${process.env.MAPBOX_ACCESS_TOKEN}`
-  )
-
-  const data = await res.json()
-  return NextResponse.json(data)
+if (missingVars.length > 0) {
+    console.error("❌ CRITICAL ERROR: The following environment variables are MISSING in process.env:");
+    missingVars.forEach(v => console.error(`   - ${v}`));
+    console.error("ℹ️  Loaded Environment Variables (Keys Only):", Object.keys(process.env).filter(k => !k.startsWith("npm_")));
+    console.error("ℹ️  Please verify your .env or .env.local file is in the root directory and formatted correctly.");
 }
+
+const handler = NextAuth({
+    providers: [
+        GoogleProvider({
+            clientId: process.env.GOOGLE_CLIENT_ID!,
+            clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+        }),
+    ],
+    secret: process.env.NEXTAUTH_SECRET!,
+})
+
+export { handler as GET, handler as POST }
